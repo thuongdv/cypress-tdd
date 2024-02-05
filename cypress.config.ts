@@ -1,5 +1,6 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
 import { defineConfig } from "cypress";
-import { configureAllureAdapterPlugins } from '@mmisty/cypress-allure-adapter/plugins';
+import { configureAllureAdapterPlugins } from "@mmisty/cypress-allure-adapter/plugins";
 import _ from "lodash/fp";
 
 export default defineConfig({
@@ -7,8 +8,8 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       configureAllureAdapterPlugins(on, config);
 
-      const environmentName = config.env.configFile || 'qat'
-      const environmentFilename = `./config/${environmentName}.json`
+      const environmentName = config.env.configFile || "qat";
+      const environmentFilename = `./config/${environmentName}.json`;
       const envConfig = require(environmentFilename);
 
       return _.merge(config, envConfig);
@@ -16,15 +17,15 @@ export default defineConfig({
     env: {
       allure: true,
       allureResults: "reports/allure-results",
-    }
+    },
   },
   watchForFileChanges: false,
   screenshotsFolder: "reports/screenshots",
   video: false,
   videosFolder: "reports/videos",
-  reporter: 'mochawesome',
+  reporter: "mochawesome",
   reporterOptions: {
-    reportDir: 'reports/results',
+    reportDir: "reports/results",
     overwrite: false,
     html: true,
     json: false,

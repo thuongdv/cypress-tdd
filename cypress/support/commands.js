@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +24,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import { waitUntil } from "../support/custom-commands/wait-until";
+import StringHelper from "../support/helpers/string-helper";
+
+Cypress.Commands.add("waitUntil", { prevSubject: "optional" }, waitUntil);
+
+Cypress.Commands.add("cget", (selector, options = {}) => {
+  if (StringHelper.isXpath(selector)) return cy.xpath(selector, options);
+  else return cy.get(selector, options);
+});

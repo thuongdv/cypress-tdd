@@ -69,3 +69,15 @@ When you see tests failed, we should do the following steps to analyze they are 
 1. Check the screenshot attached under the failed test
 2. If the screenshot does not give much information, try to run only the failed test again in the debug mode
 3. At this step you know what causes the test failed
+
+# Lint code
+
+```sh
+npx eslint .
+```
+
+# Format code
+
+```sh
+npx prettier . --write
+```
