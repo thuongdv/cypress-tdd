@@ -11,8 +11,8 @@ export default class LoginPage {
   }
 
   login(username: string, password: string): void {
-    this.usernameTxt.enter(username);
-    this.passwordTxt.enter(password);
+    this.usernameTxt.fill(username);
+    this.passwordTxt.fill(password);
     this.loginBtn.click();
   }
 

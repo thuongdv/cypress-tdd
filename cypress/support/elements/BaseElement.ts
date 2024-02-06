@@ -8,7 +8,7 @@ import { ILocator } from "cypress/support/models/locator";
 export default abstract class BaseElement {
   protected locator: ILocator;
 
-  public constructor(locator: ILocator | string) {
+  constructor(locator: ILocator | string) {
     if (typeof locator === "string") {
       this.locator = {
         selector: locator,
@@ -21,15 +21,15 @@ export default abstract class BaseElement {
     }
   }
 
-  public click(): void {
+  click(): void {
     this.scrollIntoView().click({ force: true });
   }
 
-  public doubleClickWOScroll(): void {
+  doubleClickWOScroll(): void {
     this.chain().dblclick({ force: true });
   }
 
-  public waitForVisible(timeoutInMilliseconds: number): void {
+  waitForVisible(timeoutInMilliseconds: number): void {
     cy.waitUntil(
       () =>
         cy.cget(this.locator.selector).then(($ele: JQuery<HTMLElement>) => {
@@ -42,7 +42,7 @@ export default abstract class BaseElement {
     );
   }
 
-  public waitForInvisible(timeoutInMilliseconds: number): void {
+  waitForInvisible(timeoutInMilliseconds: number): void {
     cy.waitUntil(
       () =>
         cy.cget(this.locator.selector).then(($ele: JQuery<HTMLElement>) => {
@@ -55,20 +55,20 @@ export default abstract class BaseElement {
     );
   }
 
-  public getLocator(): ILocator {
+  getLocator(): ILocator {
     return this.locator;
   }
 
-  public chain(): Chainable {
+  chain(): Chainable {
     return cy.cget(this.locator.selector);
   }
 
-  public setDynamicValue(...values: string[]): this {
+  setDynamicValue(...values: string[]): this {
     this.locator.selector = util.format(this.locator.selector, ...values);
     return this;
   }
 
-  public length(): Cypress.Chainable<number> {
+  length(): Cypress.Chainable<number> {
     if (StringHelper.isXpath(this.locator.selector)) {
       return cy.window().then((win) => {
         const selector = this.locator.selector.replace(/"/g, "'");
@@ -84,10 +84,14 @@ export default abstract class BaseElement {
     });
   }
 
-  public scrollIntoView(): Cypress.Chainable<undefined> {
+  scrollIntoView(): Cypress.Chainable<undefined> {
     const viewportHeight = Cypress.config("viewportHeight");
     const top = viewportHeight / 2 - 50;
     // Scroll element under the top fix area
     return cy.cget(this.locator.selector).scrollIntoView({ offset: { top: -top, left: 0 } });
+  }
+
+  hover(): Cypress.Chainable<any> {
+    return this.chain().realHover();
   }
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node", "cypress-xpath"],
+    "types": ["cypress", "node", "cypress-xpath", "cypress-real-events"],
     "baseUrl": "." /* Base directory to resolve non-absolute module names. */,
     "esModuleInterop": true,
     "resolveJsonModule": true,
