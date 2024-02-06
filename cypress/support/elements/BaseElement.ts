@@ -32,12 +32,8 @@ export default abstract class BaseElement {
   public waitForVisible(timeoutInMilliseconds: number): void {
     cy.waitUntil(
       () =>
-        cy.cget(this.locator.selector).then(($ele) => {
-          if ($ele === undefined) {
-            return false;
-          } else {
-            return $ele.length > 0;
-          }
+        cy.cget(this.locator.selector).then(($ele: JQuery<HTMLElement>) => {
+          return $ele?.length > 0;
         }),
       {
         timeout: timeoutInMilliseconds,
@@ -49,8 +45,8 @@ export default abstract class BaseElement {
   public waitForInvisible(timeoutInMilliseconds: number): void {
     cy.waitUntil(
       () =>
-        cy.cget(this.locator.selector).then(($ele) => {
-          return $ele === undefined || $ele.length === 0;
+        cy.cget(this.locator.selector).then(($ele: JQuery<HTMLElement>) => {
+          return !$ele || $ele.length === 0;
         }),
       {
         timeout: timeoutInMilliseconds,
@@ -88,7 +84,7 @@ export default abstract class BaseElement {
     });
   }
 
-  public scrollIntoView(): Cypress.Chainable<Subject> {
+  public scrollIntoView(): Cypress.Chainable<undefined> {
     const viewportHeight = Cypress.config("viewportHeight");
     const top = viewportHeight / 2 - 50;
     // Scroll element under the top fix area

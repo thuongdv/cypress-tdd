@@ -15,4 +15,9 @@ export default class LoginPage {
     this.passwordTxt.enter(password);
     this.loginBtn.click();
   }
+
+  displays(): void {
+    this.usernameTxt.chain().should("be.visible");
+    this.passwordTxt.chain().should("be.visible");
+  }
 }
