@@ -1,12 +1,14 @@
 /* eslint @typescript-eslint/no-var-requires: "off" */
 import { defineConfig } from "cypress";
 import { configureAllureAdapterPlugins } from "@mmisty/cypress-allure-adapter/plugins";
+
 import _ from "lodash/fp";
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       configureAllureAdapterPlugins(on, config);
+      require('cypress-mochawesome-reporter/plugin')(on);
 
       const environmentName = config.env.configFile || "qat";
       const environmentFilename = `./config/${environmentName}.json`;
@@ -19,6 +21,9 @@ export default defineConfig({
       allureResults: "reports/allure-results",
     },
   },
+  retries: {
+    "runMode": 1
+  },
   chromeWebSecurity: false,
   viewportHeight: 800,
   viewportWidth: 1440,
@@ -26,11 +31,12 @@ export default defineConfig({
   screenshotsFolder: "reports/screenshots",
   video: false,
   videosFolder: "reports/videos",
-  reporter: "mochawesome",
+  reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
-    reportDir: "reports/results",
-    overwrite: false,
-    html: true,
-    json: false,
+    reportDir: "reports/html",
+    charts: true,
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
   },
 });

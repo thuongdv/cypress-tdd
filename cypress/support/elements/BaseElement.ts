@@ -91,7 +91,7 @@ export default abstract class BaseElement {
     return cy.cget(this.locator.selector).scrollIntoView({ offset: { top: -top, left: 0 } });
   }
 
-  hover(): Cypress.Chainable<any> {
+  hover(): Cypress.Chainable<JQuery<HTMLElement>> {
     return this.chain().realHover();
   }
 }

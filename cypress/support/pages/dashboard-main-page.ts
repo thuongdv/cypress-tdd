@@ -1,6 +1,6 @@
 import Element from "../elements/Element";
 import Link from "../elements/Link";
-import Alert from "./dialogs/alert";
+import Dialog from "./dialogs/dialog";
 
 export default class dashboardMainPage {
   private readonly menuLocator = new Element("#main-menu");
@@ -44,11 +44,11 @@ export default class dashboardMainPage {
 
   deletePageWhichHasChildAndVerifyDialogMessage(msg: string[]) {
     this.deletePage();
-    Alert.aaa(msg);
+    Dialog.verifyConfirmAndAlertMessage(msg);
   }
 
   deletePageAndVerifyDialogMessage(msg: string) {
     this.deletePage();
-    // Alert.verifyMessage(msg);
+    Dialog.verifyConfirmMessage(msg);
   }
 }
