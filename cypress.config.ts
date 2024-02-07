@@ -8,7 +8,7 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       configureAllureAdapterPlugins(on, config);
-      require('cypress-mochawesome-reporter/plugin')(on);
+      require("cypress-mochawesome-reporter/plugin")(on);
 
       const environmentName = config.env.configFile || "qat";
       const environmentFilename = `./config/${environmentName}.json`;
@@ -22,7 +22,7 @@ export default defineConfig({
     },
   },
   retries: {
-    "runMode": 1
+    runMode: 1,
   },
   chromeWebSecurity: false,
   viewportHeight: 800,
