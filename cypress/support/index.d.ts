@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="@cypress/grep" />
 
 // tslint:disable-next-line:no-namespace
 declare namespace Cypress {

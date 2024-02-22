@@ -31,11 +31,15 @@ We do this purely as a convenience mechanism, so you don't have to import this f
 
 - Run test automatically and then open with Allure report
 
-  `npm run clean-run-report`
+  `npm run clean-run-all-report`
 
 - Run Cypress run with specific spec, headed mode, don't quite the browser
 
   `npx cypress run --browser chrome --env configFile=qat --spec "cypress/e2e/todo.feature" --headed --no-exit`
+
+- Run tests by tag
+
+  `npx cypress run --browser chrome --env grepTags=@smoke,grepOmitFiltered=true`
 
 # Parallel execution
 

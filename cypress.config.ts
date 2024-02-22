@@ -9,6 +9,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       configureAllureAdapterPlugins(on, config);
       require("cypress-mochawesome-reporter/plugin")(on);
+      require("@cypress/grep/src/plugin")(config);
 
       const environmentName = config.env.configFile || "qat";
       const environmentFilename = `./config/${environmentName}.json`;

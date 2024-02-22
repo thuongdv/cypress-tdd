@@ -11,6 +11,7 @@ const loginPage = new LoginPage();
 it(
   'Verify that user can remove any main parent page except "Overview" page successfully ' +
     "and the order of pages stays persistent as long as there is not children page under it",
+  { tags: "@smoke" },
   () => {
     const parentPageName = DateTimeHelper.getToday();
     const chillPageName = "Child " + DateTimeHelper.getToday();

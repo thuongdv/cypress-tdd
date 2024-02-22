@@ -23,6 +23,9 @@ import "cypress-xpath";
 import "cypress-real-events";
 import "cypress-mochawesome-reporter/register";
 
+import registerCypressGrep from "@cypress/grep/src/support";
+registerCypressGrep();
+
 // Reference: https://docs.cypress.io/api/events/catalog-of-events#Uncaught-Exceptions
 Cypress.on("uncaught:exception", (err) => {
   if (err.message.includes("Cannot read properties of undefined")) {
