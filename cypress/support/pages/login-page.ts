@@ -6,6 +6,8 @@ export default class LoginPage {
   private readonly passwordTxt: TextBox = new TextBox("#password");
   private readonly loginBtn: Button = new Button(".btn-login");
 
+  public readonly errorMessage: string = "Username or password is invalid";
+
   open(): void {
     cy.visit("/TADashboard/login.jsp");
   }

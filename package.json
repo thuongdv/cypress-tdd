@@ -21,7 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/grep": "4.0.1",
-    "@mmisty/cypress-allure-adapter": "0.16.2",
+    "@mmisty/cypress-allure-adapter": "0.16.4",
     "@types/lodash": "4.14.202",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "allure-commandline": "2.27.0",
