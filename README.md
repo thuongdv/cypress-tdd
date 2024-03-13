@@ -85,3 +85,8 @@ npx eslint .
 ```sh
 npx prettier . --write
 ```
+
+# VS Code extensions
+
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
